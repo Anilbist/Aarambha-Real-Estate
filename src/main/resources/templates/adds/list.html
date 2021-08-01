@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<style>
+          * {
+    font-family: "libre Franklin", sans-serif;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 auto
+}
+
+.cover .upper-cover {
+/*    background-image: linear-gradient(rgba(0, 0, 0, 0.55) 0px, rgba(0, 0, 0, 0)), url(../img/prod1.jpg);*/
+    background-color: #4d5d70;
+    height: 350px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    text-align: center;
+    margin-top: 84.4px;   
+}
+
+h1 {
+    color: #fff;
+    font-weight: 500;
+    line-height: 36px;
+    font-size: 36px;
+    padding: 50px 0 20px;
+    text-align: center
+}
+
+form.example input[type=text] {
+    height: 42px;
+    font-size: 17px;
+    background: white;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #aaa;
+    border-right: none;
+    padding-left: 15px;
+    width: 500px;
+    background: #f1f1f1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+}
+
+form.example input[type=text]:focus {
+    outline: none
+}
+
+form.example input:focus::-webkit-input-placeholder {
+    transition: opacity .45s ease;
+    opacity: 0
+}
+
+form.example input:focus::-moz-placeholder {
+    transition: opacity .45s ease;
+    opacity: 0
+}
+
+form.example button {
+    width: 50px;
+    height: 42px;
+    background: #0b20de;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #0b20de;
+    border-left: none;
+    border-top-right-radius:3px;
+    border-bottom-right-radius: 3px;
+    margin-left: -4px;
+     -webkit-appearance: none;
+    -moz-appearance: none;
+   
+}
+
+form.example button:hover {
+    background: #ca2120
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table
+}
+.cat-title {
+    padding: 20px 0 20px 4px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #111;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.cat-title a {
+    
+}
+
+.cat-title span a {
+    background-color: #dc143c;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+.cat-title span a:hover {
+    background: #ca2120;
+}
+
+.checked{
+    color: red;
+}
+#star{
+    cursor: pointer;
+}
+#star:hover{
+    color: red;
+}
+.card{
+    cursor: pointer;
+    transition: .2s;
+}
+.card:hover{
+    transform: scale(1.07);
+}
+
+/*testimonials*/
+ 
+
+.container {
+    max-width: 950px
+}
+
+#card {
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+@media(max-width:767px) {
+    #card {
+        margin: 1rem 0.7rem 1rem;
+        max-width: 80vw
+    }
+}
+
+#card-image {
+    width: 6.2rem;
+    border-radius: 5rem;
+    margin: 1.3rem auto 1rem auto
+}
+
+.col-md-4 {
+    padding: 0 0.5rem
+}
+
+#card-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-family: 'IM Fell French Canon SC'
+}
+
+#card-text {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    color: rgb(82, 81, 81);
+    line-height: 1.4rem
+}
+
+#footer {
+    border-top: none;
+    text-align: center;
+    line-height: 1.2rem;
+    padding: 2rem 0 1.4rem 0;
+    font-family: 'Varela Round'
+}
+
+#name {
+    font-size: 0.8rem;
+    font-weight: bold
+}
+
+#position {
+    font-size: 0.7rem
+}
+
+#a {
+    color: rgb(151, 248, 6);
+    font-weight: bold
+}
+
+#a:hover {
+    color: rgb(151, 248, 6)
+}
+</style>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="~{layouts/main_layout :: head(title = 'Aarambha Real Estate')}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="assets/js/smoothproducts.min.js"></script>
+<script src="assets/js/theme.js"></script>
+
+
+</head>
+
+<body>
+    <div>
+<nav th:replace="~{layouts/main_layout :: nav}"  style="z-index:-1; position: relative;"></nav>
+</div>
+<!-- search panel-->
+ <div class="cover">
+    <div class="upper-cover" >
+        <h1>Find your Happiness Here</h1>
+        <p style="color:#fafafa; font-size:20px; padding:0px 0 2px 0;"></p>
+
+        <form class="example"  
+              method="POST"
+                th:action="@{/search}"
+                th:object="${m}">
+            <input  th:field="*{messageText}" type="text" name="q" placeholder="Search by city, location" value="" autocomplete="off"
+                   >
+            <small th:errors="*{messageText}" style="color:red;"></small>
+            <button class="search-button" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 32 32" width="32" style="margin-bottom:-15.5px; margin-right:-5px;" fill="white">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                </svg>
+            </button>
+        </form>
+<p><a style="text-decoration:none; font-size:14px; font-weight:500; color:#fcfcfc; line-height:50px; padding-top:20px; " 
+      th:href="@{/}" > Reset Search </a> <span style='color:#fafafa;
+            margin:0 5px 0 5px;'></span> </p>
+    </div>
+    
+</div>
+  
+      <!-- <div class="row" style="margin: 0;">
+      <div class="col">
+        <form
+                method="POST"
+                th:action="@{/search}"
+                th:object="${m}"
+                class="shadow"
+        >
+
+          <div class="form-group">
+          <textarea
+                  id="body"
+                  class="form-control"
+                  name="messageText"
+                  placeholder="Search Property"
+                  rows="1"
+                  required="required"
+                  th:field="*{messageText}"
+          >
+              </textarea>
+            <small th:errors="*{messageText}" style="color:red;"></small>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">
+            Search
+          </button>
+        </form>
+        <a th:href="@{/}">Reset Search</a>
+      </div>
+    </div> -->
+      
+      
+      
+      
+      <!-- search panel-->
+
+<div
+        class="container"
+        style="padding: 20px;margin-top: 100px;min-height: 600px;padding-top: 0; z-index: 9998;"
+        th:fragment="content"
+>
+    <p class="cat-title"><h3>Listed Property</h3></p>
+
+  <div
+          class="clean-blog-adds"
+          style="padding: 20px;padding-bottom: 25px;margin: 15px;"
+  >
+      
+      
+
+   
+    <!-- Submit New Post Button -->
+     <!-- <div class="row" style="margin: 0;" sec:authorize="isAuthenticated()">
+      <div class="col">
+        <a th:href="@{/adds/submit}">
+          <button class="btn btn-outline-primary float-right" type="button">
+            <i class="icon-pencil"></i>Post New Ads
+          </button>
+        </a>
+      </div>
+    </div> -->
+
+    <!-- Quote -->
+   <!-- <div class="row" style="margin: 0;margin-top: 20px;">
+      <div class="col">
+        <div class="block-heading">
+          <h2
+                  class="text-info d-flex justify-content-center align-items-center"
+          >
+            Adds
+          </h2>
+          <p
+                  class="d-flex justify-content-center"
+                  style="color: rgb(112,116,120);"
+          >
+          </p>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Adds -->
+    <div
+            class="row d-flex justify-content-center shadow-sm border rounded"
+            style="margin-left: 0;margin-right: 0;margin-top: 10px;padding-top: 25px;padding-bottom: 25px;"
+            
+    >
+        <!-- option -->
+        
+         
+        <div class="col-md-4 mt-2" th:each="adds : ${adds}">
+            <div class="card" >
+                <div class="card-body">
+                    <div class="card-img-actions"> <img alt="No Image Attached" style="width: 100%; height: 80%" th:src="${adds.imageBase64}" width="96" height="350" > </div>
+                </div>
+                <div class="card-body  text-center " style="width:80%;">
+                    <div class="mb-2">
+                        <h5 class="font-weight-semibold mb-2"th:text="${adds.title}"> <a href="#" class="text-default mb-2" 
+                                                                  data-abc="true"></a> </h5>
+                    
+                    </div>
+                    <h5 class="font-weight-semibold mb-2"> Rs.<span class=" "th:text="${adds.price}"></span> <a href="#" class="text-default mb-2" 
+                                                                  data-abc="true"></a> </h5>
+                     <!--<h4 class="mb-0 font-weight-semibold">Rs 2500000</h4> -->
+                    <div id="rateMe4" class="feedback">
+                        <span class="fa fa-star checked" id="star"></span>
+                         <span class="fa fa-star checked" id="star"></span>
+                        <span class="fa fa-star checked" id="star" ></span>
+                         <span class="fa fa-star" id="star" ></span>
+                           <span class="fa fa-star" id="star" ></span>
+                    </div>
+                     <i class="fa fa-map-marker"> &nbsp;<span th:text="${adds.address}"></span></i>     
+                    <div class="text-muted mb-3">34 reviews</div> <a th:href="@{'/adds/' + ${adds.id}}">
+          <button class="btn btn-outline-primary btn-sm" type="button">Learn More</button>
+        </a> 
+                    <a th:href="@{'/adds/delete/' + ${adds.id}}" sec:authorize="isAuthenticated()&&hasRole('ROLE_ADMIN')">
+          <button style="background-color: red;" class="btn btn-outline-primary btn-sm" type="button">
+            Delete</button
+          >
+        </a>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+  
+        
+        
+        
+        <!-- option -->
+        
+        <!--  <div class="col-lg-11 order-12">
+        <h5 th:text="${adds.title}">
+          Lorem Ipsum dolor sit amet
+        </h5>
+        <img alt="No Image Attached" style="width: 50px; height: 50px" th:src="${adds.imageBase64}">
+        <div class="info">
+              <span
+                      class="text-muted" style="margin-right: 0;">
+                <span
+                        th:title="${adds.getCreationDate()}"
+                        th:datetime="${adds.getCreationDate()}"
+                        th:text="${adds.getPrettyTime()}"
+                >4 hours ago by</span>by <a
+                      href="#"
+                      style="color: rgb(0,123,255);"
+                      th:href="@{'/u/' + ${adds.getUser().getId()}}"
+                      th:text="${adds.getUser().getUsername()}"
+              >John Smith</a
+              ></span>
+        </div>
+        <p style="overflow-wrap: anywhere;font-size: 15px;" th:text="${adds.url}">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
+          urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor
+          sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim
+          nec auctor in, mattis vitae leo.
+        </p>
+        <a th:href="@{'/adds/' + ${adds.id}}">
+          <button class="btn btn-outline-primary btn-sm" type="button">
+            Read More</button
+          >
+        </a>
+        <a th:href="@{'/adds/delete/' + ${adds.id}}" sec:authorize="isAuthenticated()&&hasRole('ROLE_ADMIN')">
+          <button style="background-color: red;" class="btn btn-outline-primary btn-sm" type="button">
+            Delete</button
+          >
+        </a>
+        <a
+                href="#"
+                style="margin-left: 20px;"
+                th:href="@{'/adds/' + ${adds.id}}"
+                th:text="|${adds.getComments().size()} comments|"
+        >78 Comments</a>
+
+        <div sec:authorize="isAuthenticated()">
+          <form
+                  method="POST"
+                  th:action="@{/message/add/submit/(id=${adds.getUser().getId()},addId=${adds.getId()})}"
+                  th:object="${m}"
+                  class="shadow"
+          >
+
+            <div class="form-group">
+          <textarea
+                  id="body"
+                  class="form-control"
+                  name="messageText"
+                  placeholder="Send Personal Message"
+                  rows="3"
+                  required="required"
+                  th:field="*{messageText}"
+          >
+              </textarea>
+              <small th:errors="*{messageText}" style="color:red;"></small>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+</div>
+            
+            <!-- Happy Customer -->
+            <br>
+            <div class="container">
+                <div class="row">
+                    <h2 style="color: inherit; " >What Customer Say About Us</h2>
+                </div>
+                <br>
+                <hr class="solid">
+                <br>
+                <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card d-flex mx-auto" id="card">
+                <div class="card-image" id="card-image"> <img class="img-fluid d-flex mx-auto" src="https://i.imgur.com/Uz4FjGZ.jpg"> </div>
+                <div class="card-text" id="card-text">
+                    <div class="card-title" id="card-title">Lorem Ipsum!</div> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus Duis leo. Donec sodales sagittis magna
+                </div>
+                <div class="footer" id="footer"> <span id="name">Micheal Smith<br></span> <span id="position">CEO of <a id="a" href="#">Google.com</a></span> </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card d-flex mx-auto" id="card">
+                <div class="card-image" id="card-image"> <img class="img-fluid d-flex mx-auto" src="https://i.imgur.com/Uz4FjGZ.jpg"> </div>
+                <div class="card-text" id="card-text">
+                    <div class="card-title" id="card-title">Lorem Ipsum!</div> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus Duis leo. Donec sodales sagittis magna
+                </div>
+                <div class="footer" id="footer"> <span id="name">Angellia Miller<br></span> <span id="position">CEO of <a id="a" href="#">Facebook.com</a></span> </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card d-flex mx-auto "id="card">
+                <div class="card-image" id="card-image"> <img class="img-fluid d-flex mx-auto" src="https://i.imgur.com/udGH5tO.jpg"> </div>
+                <div class="card-text" id="card-text">
+                    <div class="card-title" id="card-title">Lorem Ipsum!</div> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus Duis leo. Donec sodales sagittis magna
+                </div>
+                <div class="footer" id="footer"> <span id="name">Christina Williams<br></span> <span id="position">UX Designer at <a id="a" href="#">Youtube.com</a></span> </div>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            
+            <!-- Happy Customer -->
+
+<!-- Start: Footer White -->
+<!--
+<footer class="page-footer" style="margin-top: 30px;">
+  <div class="footer-copyright" style="margin: 0;padding: 0;">
+	<p>© 2019 Copyright Text</p>
+  </div>
+</footer>
+
+ -->
+
+ <footer th:replace="~{layouts/main_layout :: footer}"  style="z-index: 9999;" ></footer>
+
+
+</body>
+</html>

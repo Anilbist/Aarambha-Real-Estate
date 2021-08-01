@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="~{layouts/main_layout :: head(title = 'Aarambha Real Estate')}">
+</head>
+
+<body>
+<nav th:replace="~{layouts/main_layout :: nav}"  style="z-index: 9999;"></nav>
+
+<div
+        class="container"
+        style="padding: 20px;margin-top: 100px;min-height: 600px;padding-top: 0; z-index: 9998;"
+        th:fragment="content"
+>
+  <div
+          class="clean-blog-adds"
+          style="padding: 20px;padding-bottom: 25px;margin: 15px;"
+  >
+
+    <!-- Quote -->
+    <div class="row" style="margin: 0;margin-top: 20px;">
+      <div class="col">
+        <div class="block-heading">
+          <h2
+                  class="text-info d-flex justify-content-center align-items-center"
+          >
+            Send Message
+          </h2>
+          <p
+                  class="d-flex justify-content-center"
+                  style="color: rgb(112,116,120);"
+          >
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin: 0;">
+      <div class="col">
+        <a th:href="@{/message/inbox}">
+          <button class="btn btn-outline-primary float-right" type="button">
+            Show Inbox
+          </button>
+        </a>
+        <a th:href="@{/message/outbox}">
+          <button class="btn btn-outline-primary float-right" style="margin-right: 5px" type="button">
+            Show Outbox
+          </button>
+        </a>
+      </div>
+    </div>
+    <!-- Friends -->
+    <div
+            class="row d-flex justify-content-center shadow-sm border rounded"
+            style="margin-left: 0;margin-right: 0;margin-top: 10px;padding-top: 25px;padding-bottom: 25px;"
+            th:each="friend : ${friends}"
+    >
+      <div class="col-lg-11 order-12">
+        <h5 th:text="${friend.getFullName()}">
+        </h5>
+        <h5 th:text="${friend.getEmail()}">
+        </h5>
+        <form
+                method="POST"
+                th:action="@{/message/submit/(id=${friend.getId()})}"
+                th:object="${m}"
+                class="shadow"
+        >
+
+          <div class="form-group">
+          <textarea
+                  id="body"
+                  class="form-control"
+                  name="messageText"
+                  placeholder="Message"
+                  rows="3"
+                  required="required"
+                  th:field="*{messageText}"
+          >
+              </textarea>
+            <small th:errors="*{messageText}" style="color:red;"></small>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">
+            Send
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start: Footer White -->
+<!--
+<footer class="page-footer" style="margin-top: 30px;">
+  <div class="footer-copyright" style="margin: 0;padding: 0;">
+	<p>© 2019 Copyright Text</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="assets/js/smoothproducts.min.js"></script>
+<script src="assets/js/theme.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head
+    th:replace="~{layouts/main_layout :: head(title = 'Account Profile Page')}"
+  >
+  </head>
+  <body>
+    <nav th:replace="~{layouts/main_layout :: nav}"></nav>
+
+    <!-- profile -->
+    <div id="profile" class="container"  style="margin-top: 100px;">
+      <div class="row">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Adds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Comments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Preferences</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+
+        <div class="col-8">
+        <div
+                class="row d-flex justify-content-center shadow-sm border rounded"
+                style="margin-left: 0;margin-right: 0;margin-top: 10px;padding-top: 25px;padding-bottom: 25px;"
+                th:each="adds : ${adds}"
+        >
+          <div class="col-lg-11 order-12">
+            <h5 th:text="${adds.title}">
+            </h5>
+            <img alt="No Image Attached" style="width: 100%; height: 80%" th:src="${adds.imageBase64}">
+            <div class="info">
+              <span
+                      class="text-muted" style="margin-right: 0;">
+                <span
+                        th:title="${adds.getCreationDate()}"
+                        th:datetime="${adds.getCreationDate()}"
+                        th:text="${adds.getPrettyTime()}"
+                >4 hours ago by</span>by <a
+                      href="#"
+                      style="color: rgb(0,123,255);"
+                      th:href="@{'/u/' + ${adds.getUser().getId()}}"
+                      th:text="${adds.getUser().getUsername()}"
+              >John Smith</a
+              ></span>
+            </div>
+            <p style="font-size: 15px;" th:text="${adds.url}">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
+              urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim
+              nec auctor in, mattis vitae leo.
+            </p>
+            <a th:href="@{'/adds/' + ${adds.id}}">
+              <button class="btn btn-outline-primary btn-sm" type="button">
+                Read More</button
+              >
+            </a>
+            <a
+                    href="#"
+                    style="margin-left: 20px;"
+                    th:href="@{'/adds/' + ${adds.id}}"
+                    th:text="|${adds.getComments().size()} comments|"
+            >78 Comments</a
+            >
+          </div>
+        </div>
+
+        </div>
+        <!-- Right Side -->
+        <div class="col-3 offset-1">
+          <div class="row">
+            <div class="card col-12">
+              <img
+                class="card-img-top"
+                th:src="@{/images/small.png}"
+                alt="Card image cap"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="card col-12">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <div class="card-body">
+                <h5 class="card-title">User Information</h5>
+                <p class="card-text">
+                  Name: <span th:text="${user.getFullName()}"></span></span><br />
+                  Email: <span th:text="${user.getEmail()}"></span></span><br />
+                  Username: <span th:text="${user.getUsername()}"></span></span><br />
+                  User Since: <span
+                        th:title="${user.getCreationDate()}"
+                        th:datetime="${user.getCreationDate()}"
+                        th:text="${user.getPrettyTime()}"
+                        style="margin-top: 10px;">
+                        >4 hours ago</span><br />
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // row -->
+    </div>
+    <!-- // profile -->
+  </body>
+</html>

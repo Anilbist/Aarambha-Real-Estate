@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="~{layouts/main_layout :: head(title = 'Aarambha Real Estate')}">
+</head>
+
+<body>
+<nav th:replace="~{layouts/main_layout :: nav}"></nav>
+<main class="page login-page">
+  <section
+          class="clean-block clean-form dark"
+          style="background-color: rgb(255,255,255);"
+  >
+    <div class="container">
+      <div class="block-heading" style="padding-top: 40px;">
+        <h2 class="text-info">New Add</h2>
+      </div>
+      <form
+              method="POST"
+              enctype="multipart/form-data"
+              th:action="@{/adds/submit}"
+              th:object="${adds}"
+              class="shadow"
+      >
+        <div class="form-group">
+          <label for="title">Title</label
+          ><input
+                id="title"
+                class="form-control item"
+                type="text"
+                name="title"
+                placeholder="Title"
+                required="required"
+                th:field="*{title}"
+        />
+          <small th:errors="*{title}" style="color:red;"></small>
+        </div>
+          <!<!-- price section -->
+          
+          <div class="form-group">
+          <label for="price">Price</label
+          ><input
+                id="address"
+                class="form-control item"
+                type="number"
+                name="price"
+                placeholder="Price"
+                required="required"
+                th:field="*{price}"
+        />
+          <small th:errors="*{price}" style="color:red;"></small>
+        </div>
+          <!--address field -->
+         
+          <div class="form-group">
+          <label for="address">Address</label
+          ><input
+                id="address"
+                class="form-control item "
+                type="text"
+                name="address"
+                placeholder="Address"
+                required="required"
+                th:field="*{address}"
+        />
+          <small th:errors="*{address}" style="color:red;"></small>
+        </div>
+          <style>
+              .form-inline {
+               display: flex;
+            flex-flow: row wrap;
+               align-items: center;
+       }
+          .form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+          </style>
+          
+          <!--address field -->
+          
+          <!-- latitude and longitude -->
+          
+          <div class="form-inline">
+          <label for="latitude"></label
+          ><input
+                id="latitude"
+                class="form-control col-4 "
+                type="text"
+                name="latitude"
+                placeholder="Latitude"
+                required="required"
+                th:field="*{latitude}"
+        />
+          <label for="longitude"></label
+          ><input
+                id="longitude"
+                class="form-control col-4 " 
+                type="text"
+                name="longitude"
+                placeholder="Longitude"
+                required="required"
+                th:field="*{longitude}"
+        />
+          <small th:errors="*{address}" style="color:red;"></small>
+        </div>
+          
+          <!-- latitude and longitude -->
+          
+
+        <div class="form-group">
+          <label for="body">Description</label
+          ><textarea
+                id="body"
+                class="form-control"
+                name="body"
+                placeholder="Description"
+                rows="3"
+                required="required"
+                th:field="*{url}"
+        >
+              </textarea>
+          <small th:errors="*{url}" style="color:red;"></small>
+        </div>
+
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image" accept="image/*">
+
+        <button class="btn btn-primary btn-block" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>

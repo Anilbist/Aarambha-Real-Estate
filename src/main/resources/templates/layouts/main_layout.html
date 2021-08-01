@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
+  <title th:text="${title}">Aarambha Real Estate</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"
+  />
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+  />
+  <link rel="stylesheet" th:href="@{/css/fontawesome5-overrides.min.css}"/>
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+  />
+  <link rel="stylesheet" th:href="@{/css/smoothproducts.css}" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+  <script th:src="@{/css/smoothproducts.min.js}" ></script>
+  <script th:src="@{/css/theme.js}"></script>
+</head>
+
+<body>
+<nav
+        class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar"
+>
+  <div class="container">
+    <a class="navbar-brand logo" th:href="@{/}"><strong>Aarambha Real Estate</strong></a>
+    <button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#navcol-1">
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navcol-1" >
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" th:href="@{/about}">About Us</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" th:href="@{/}">Contact</a>
+        </li>
+        <li class="nav-item" role="presentation" sec:authorize="isAuthenticated()&&hasRole('ROLE_ADMIN')">
+          <a class="nav-link active" th:href="@{/users}">Users</a>
+        </li>
+        <li class="nav-item" role="presentation" sec:authorize="isAuthenticated()&&!hasRole('ROLE_ADMIN')">
+          <a class="nav-link" th:href="@{/messages}">Messages</a>
+        </li>
+
+        <!-- if user is signed in -->
+        <li class="nav-item" role="presentation" sec:authorize="isAuthenticated()&&!hasRole('ROLE_ADMIN')">
+          <a class="nav-link" th:href="@{/profile}">Profile</a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+        <form
+                method="POST"
+                th:action="@{/logout}"
+                sec:authorize="isAuthenticated()"
+        >
+            <button
+                    class="nav-link link text-danger d-xl-flex justify-content-xl-center align-items-xl-center"
+                    style="border: none; background: none;"
+
+            ><i class="fa fa-sign-out" id="navbar-icon"></i>&nbsp;logout</button
+            >
+        </form>
+          </li>
+        <li  class="nav-item" role="presentation" sec:authorize="isAuthenticated()" >
+        <a  id="postButton" class="nav-link text-success d-xl-flex justify-content-xl-center align-items-xl-center"
+            style="border:1px solid green; border-radius: 2px; " th:href="@{/adds/submit}">
+            <i class="icon-pencil"></i> &nbsp; Post Ads
+        </a>
+     
+  
+        </li>
+
+        <!-- if user is not signed in -->
+
+              <li class="nav-item" role="presentation " sec:authorize="!isAuthenticated()" >
+          <a
+                  class="nav-link text-primary d-xl-flex justify-content-xl-center align-items-xl-center"
+                  th:href="@{/login}"
+          ><i class="fa fa-sign-in" id="navbar-icon"></i>&nbsp;login</a
+          >
+        </li>
+
+        <!--<li class="nav-item" role="presentation " sec:authorize="!isAuthenticated()" >
+          <a
+                  class="nav-link text-primary d-xl-flex justify-content-xl-center align-items-xl-center"
+                  th:href="@{/adminlogin}"
+          ><i class="fa fa-sign-in" id="navbar-icon"></i>&nbsp;admin login</a
+          >
+        </li> -->
+
+        <li class="nav-item" role="presentation" sec:authorize="!isAuthenticated()">
+          <a
+                  class="nav-link text-success d-xl-flex justify-content-xl-center align-items-xl-center"
+                  th:href="@{/register}"
+          ><i class="fa fa-user-plus" id="navbar-icon"></i
+          >&nbsp;register</a
+          >
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div
+        class="container"
+        style="padding: 20px;margin-top: 100px;min-height: 600px;padding-top: 0;"
+>
+  <p>Content goes here</p>
+</div>
+<!-- Start: Footer White 
+<footer class="page-footer" style="margin-top: 30px;">
+  <div class="footer-copyright" style="margin: 0;padding: 0;">
+    <p>© 2019 Copyright Text</p>
+  </div>
+</footer>
+ End: Footer White -->
+
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+    <br>
+    <hr class="solid">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Aarambha Real Estate</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet numquam iure provident voluptate
+          esse
+          quasi, veritatis totam voluptas nostrum.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a th:href="@{/about}" >ABOUT US</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">BLOG</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">AWARDS</a>
+            </p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Contact details -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-home mr-3"></i> Kathmandu, Nepal</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> +977 98 25 333 52</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-print mr-3"></i> +977 98 25 333 52</p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <!-- Social buttons -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+        <!-- Facebook -->
+        <a type="button" class="btn-floating btn-fb">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        &nbsp;
+        &nbsp;
+        
+        <!-- Twitter -->
+        <a type="button" class="btn-floating btn-tw">
+          <i class="fab fa-twitter"></i>
+        </a>
+        &nbsp;
+        &nbsp;
+        <!-- Google +-->
+        <a type="button" class="btn-floating btn-gplus">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+        &nbsp;
+        &nbsp;
+        <!-- Dribbble -->
+        <a type="button" class="btn-floating btn-instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#"> Aarambha Real Estate</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<style>
+    #auth{
+        border: 1px solid red;
+        margin-bottom: 20px;
+        padding:10px;
+        border-radius: 4px;
+        background-color: red;
+        color: white
+    }
+</style>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="~{layouts/main_layout :: head(title = 'Aarambha Real Estate')}">
+</head>
+
+<body>
+<nav th:replace="~{layouts/main_layout :: nav}"></nav>
+<main class="page login-page">
+    <section
+            class="clean-block clean-form dark"
+            style="background-color: rgb(255,255,255);"
+    >
+        <div class="container">
+            <div class="block-heading" style="padding-top: 40px;">
+                <h2 class="text-info">Log In</h2>
+            </div>
+            <form method="post" class="shadow" th:action="@{/login}">
+                <div class="alert alert-danger" th:if="${param.error != null}">
+                    Invalid username and password.
+                </div>
+                <div class="alert alert-success" th:if="${param.logout != null}">
+                    You have been logged out.
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label
+                    ><input class="form-control item" type="email" id="email" name="email"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label
+                    ><input class="form-control" type="password" id="password" name="password"/>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="checkbox"
+                        /><label class="form-check-label" for="checkbox"
+                    >Remember me</label
+                    >
+                    </div>
+                </div>
+               
+                <button class="btn btn-primary btn-block" type="submit">
+                    Log In
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

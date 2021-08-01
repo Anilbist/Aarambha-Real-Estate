@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head th:replace="~{layouts/main_layout :: head(title = 'Aarambha Real Estate')}">
+</head>
+
+<body>
+<nav th:replace="~{layouts/main_layout :: nav}"></nav>
+
+<main class="page registration-page">
+  <section
+          class="clean-block clean-form dark"
+          style="background-color: rgb(255,255,255);"
+  >
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Registration</h2>
+        <p>This will only take 2 minutes of your time.</p>
+      </div>
+
+      <!-- Success Registration-->
+      <div class="row d-flex justify-content-center" th:if="${success}">
+        <div class="col-6 alert alert-success " role="alert">
+          Success! Thank you for registering.
+        </div>
+      </div>
+
+      <form
+              method="POST"
+              class="shadow"
+              role="form"
+              th:action="@{/register}"
+              th:object="${user}"
+              th:if="!${success}"
+      >
+        <!-- Validation Errors -->
+        <div class="row" th:if="${validationErrors}">
+          <div class="col d-flex justify-content-center align-items-center">
+                <span class="text-danger align-middle">
+                  <ul th:each="error : ${validationErrors}">
+                    <li th:text="${error.getDefaultMessage()}"></li>
+                  </ul>
+                </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+                  class="form-control item"
+                  type="text"
+                  id="fullName"
+                  placeholder="John Doe"
+                  name="fullName"
+                  th:field="*{fullName}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+                  class="form-control item"
+                  type="email"
+                  id="email"
+                  placeholder="JohnDoe@xyz.com"
+                  name="email"
+                  th:field="*{email}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+                  class="form-control item"
+                  type="text"
+                  id="username"
+                  placeholder="JDoe"
+                  name="username"
+                  th:field="*{username}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+                  class="form-control item"
+                  type="number"
+                  id="phone"
+                  placeholder="Phone Number"
+                  name="phone"
+                  th:field="*{phone}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+                  class="form-control item"
+                  type="password"
+                  id="password"
+                  name="password"
+                  th:field="*{password}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Password (repeat)</label>
+          <input
+                  class="form-control item"
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  th:field="*{confirmPassword}"
+                  required
+                  autofocus
+          />
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
